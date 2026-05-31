@@ -43,7 +43,7 @@ export const useRegisterLogin = (onClose: () => void) => {
             dispatch(loginSuccess({ ...data.user }));
             queryClient.invalidateQueries({ queryKey: ['current-user'] });
             queryClient.invalidateQueries({ queryKey: ['video'] });
-            toast.success(`Welcome to CuraTube, ${data.user.username}`);
+            toast.success(`Welcome to VidTube, ${data.user.username}`);
             onClose();
         },
 

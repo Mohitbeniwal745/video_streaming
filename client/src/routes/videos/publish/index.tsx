@@ -78,7 +78,7 @@ function RouteComponent() {
                 <div className="mb-8 text-center">
                     {/* <h1 className="text-3xl font-bold text-red-500 mb-4">We are still working on this</h1> */}
                     <h1 className="text-5xl font-bold text-orange-500 mb-4">Publish a Video</h1>
-                    <p className="text-orange-200 text-lg">Share some content on CuraTube</p>
+                    <p className="text-orange-200 text-lg">Share some content on VidTube</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">

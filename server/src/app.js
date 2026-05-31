@@ -22,7 +22,7 @@ app.use(express.static("public"));
 app.use(cookieParser())
 
 app.get("/", (req, res) => {
-    res.status(200).json({ message: "Welcome to the CuraTube API" })
+    res.status(200).json({ message: "Welcome to the VidTube API" })
 })
 
 

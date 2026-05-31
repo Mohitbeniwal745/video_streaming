@@ -1,10 +1,10 @@
-# 📽️CuraTube
+# 📽️VidTube
 
-**CuraTube** is a full-stack video streaming platform that supports a handful of cool features similar to any other video streaming application out there. These features start from user authentication, video uploads, comments, likes,etc to some additional features like tweets and many more.
+**VidTube** is a full-stack video streaming platform that supports a handful of cool features similar to any other video streaming application out there. These features start from user authentication, video uploads, comments, likes,etc to some additional features like tweets and many more.
 
 ## 🚀 Features
 
-Here’s what CuraTube offers:
+Here’s what VidTube offers:
 
 - **User Authentication:** Secure sign-up, login, and session management via JWT tokens.
 - **Video Uploads:** Secure video uploading with cloudinary signed uploads.
@@ -40,12 +40,12 @@ Here’s what CuraTube offers:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ayyush08/CuraTube.git
+   git clone https://github.com/ayyush08/VidTube.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd CuraTube
+   cd VidTube
    ```
 
 3. Install the dependencies:

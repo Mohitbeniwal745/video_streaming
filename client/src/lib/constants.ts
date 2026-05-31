@@ -1,5 +1,5 @@
 
-export const APP_NAME: string = "CuraTube"
+export const APP_NAME: string = "VidTube"
 
 
 

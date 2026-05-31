@@ -66,8 +66,8 @@ export const getSignedUploadUrl = async (req, res) => {
         const timestamp = Math.round(new Date().getTime() / 1000);
         const { title } = req.body;
         const now = Date.now();
-        const videoFolder = `curatube-videos/${title}-${now}`;
-        const thumbnailFolder = `curatube-thumbnails/${title}-${now}`;
+        const videoFolder = `vidtube-videos/${title}-${now}`;
+        const thumbnailFolder = `vidtube-thumbnails/${title}-${now}`;
 
         
         const videoParamsToSign = {

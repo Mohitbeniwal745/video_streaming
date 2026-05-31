@@ -21,7 +21,7 @@ const getAllVideos = asyncHandler(async (req, res) => {
             aggregationPipeline.push({
 
                 $search: {
-                    index: "search-curatube-videos",
+                    index: "search-vidtube-videos",
                     compound: {
                         should: [
                             {
@@ -291,8 +291,8 @@ const updateVideo = asyncHandler(async (req, res) => {
 
     let newThumbnail;
     if (thumbnailLocalPath) {
-        await deleteFileFromImageKit(video.thumbnail, 'curatube-thumbnails');
-        newThumbnail = await uploadOnImageKit(thumbnailLocalPath, 'curatube-thumbnails');
+        await deleteFileFromImageKit(video.thumbnail, 'vidtube-thumbnails');
+        newThumbnail = await uploadOnImageKit(thumbnailLocalPath, 'vidtube-thumbnails');
     }
 
     let updateOptions = {

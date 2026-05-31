@@ -70,11 +70,11 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Avatar is required");
     }
     const now = Date.now();
-    const avatarFolder = `curatube-avatars/${username}-${now}`;
+    const avatarFolder = `vidtube-avatars/${username}-${now}`;
     const avatarFileName = path.basename(avatarLocalPath);
     const avatarResult = await uploadToCloudinary(avatarLocalPath, avatarFolder, avatarFileName, 'image');
 
-    const coverImageFolder = `curatube-cover-images/${username}-${now}`;
+    const coverImageFolder = `vidtube-cover-images/${username}-${now}`;
     const coverImageFileName = path.basename(coverImageLocalPath);
     const coverImageResult = await uploadToCloudinary(coverImageLocalPath, coverImageFolder, coverImageFileName, 'image');
 
@@ -293,7 +293,7 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
     const oldAvatar = existingUser.avatar;
 
-    const avatarFolder = `curatube-avatars/${existingUser.username}-${now}`;
+    const avatarFolder = `vidtube-avatars/${existingUser.username}-${now}`;
     const avatarFileName = path.basename(avatarLocalPath);
     const avatarResult = await uploadToCloudinary(avatarLocalPath, avatarFolder, avatarFileName, 'image');
 
@@ -330,7 +330,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
     const now = Date.now();
     const existingUser = await User.findById(req.user?._id);
     const oldcoverImage = existingUser.coverImage;
-    const coverImageFolder = `curatube-cover-images/${existingUser.username}-${now}`;
+    const coverImageFolder = `vidtube-cover-images/${existingUser.username}-${now}`;
     const coverImageFileName = path.basename(coverImageLocalPath);
     const coverImageResult = await uploadToCloudinary(coverImageLocalPath, coverImageFolder, coverImageFileName, 'image');
 
