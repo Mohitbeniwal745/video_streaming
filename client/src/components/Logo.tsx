@@ -6,7 +6,7 @@ export const Logo: FC = () => {
             <img 
                 src="/onlylogo.png" 
                 alt="VidTube Logo" 
-                className="w-[45px] h-[45px] object-contain rounded-lg border border-orange-500/20"
+                className="w-[45px] h-[45px] object-contain rounded-lg border border-orange-500/20 bg-black"
             />
         </div>
     );
