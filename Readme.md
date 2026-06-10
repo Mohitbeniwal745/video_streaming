@@ -1,5 +1,7 @@
 # 📽️VidTube
 
+🚀 **Live Demo:** [https://vidtube745.vercel.app/](https://vidtube745.vercel.app/)
+
 **VidTube** is a full-stack video streaming platform that supports a handful of cool features similar to any other video streaming application out there. These features start from user authentication, video uploads, comments, likes,etc to some additional features like tweets and many more.
 
 ## 🚀 Features

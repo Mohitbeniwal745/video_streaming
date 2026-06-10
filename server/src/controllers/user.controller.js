@@ -9,15 +9,15 @@ import path from "path";
 
 const accessTokenOptions = {
     httpOnly: true,
-    secure: true,
-    sameSite: 'None',
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? 'None' : 'Lax',
     path: '/',
     maxAge: 7 * 24 * 60 * 60 * 1000
 }
 const refreshTokenOptions = {
     httpOnly: true,
-    secure: true,
-    sameSite: 'None',
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? 'None' : 'Lax',
     path: '/',
     maxAge: 15 * 24 * 60 * 60 * 1000
 }
@@ -43,7 +43,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const { fullName, username, email, password } = req.body;
     console.log(email);
     if (
-        [fullName, email, username, password].some((field) => !field?.trim() === "")
+        [fullName, email, username, password].some((field) => !field || field.trim() === "")
     ) {
         throw new ApiError(400, "All fields are required");
     }
@@ -74,9 +74,12 @@ const registerUser = asyncHandler(async (req, res) => {
     const avatarFileName = path.basename(avatarLocalPath);
     const avatarResult = await uploadToCloudinary(avatarLocalPath, avatarFolder, avatarFileName, 'image');
 
-    const coverImageFolder = `vidtube-cover-images/${username}-${now}`;
-    const coverImageFileName = path.basename(coverImageLocalPath);
-    const coverImageResult = await uploadToCloudinary(coverImageLocalPath, coverImageFolder, coverImageFileName, 'image');
+    let coverImageResult;
+    if (coverImageLocalPath) {
+        const coverImageFolder = `vidtube-cover-images/${username}-${now}`;
+        const coverImageFileName = path.basename(coverImageLocalPath);
+        coverImageResult = await uploadToCloudinary(coverImageLocalPath, coverImageFolder, coverImageFileName, 'image');
+    }
 
     if (!avatarResult || !avatarResult.secure_url) {
         throw new ApiError(400, "Avatar upload failed");
@@ -166,20 +169,11 @@ const logoutUser = asyncHandler(async (req, res) => {
 
     return res
         .status(200)
-        .clearCookie('accessToken', {
-            httpOnly: true,
-            sameSite: "none",
-            secure: true,
-
-        })
-    .clearCookie('refreshToken', {
-        httpOnly: true,
-        sameSite: "none",
-        secure: true,
-    })
-    .json(
-        new ApiResponse(200, {}, 'User logged out successfully')
-    )
+        .clearCookie('accessToken', accessTokenOptions)
+        .clearCookie('refreshToken', refreshTokenOptions)
+        .json(
+            new ApiResponse(200, {}, 'User logged out successfully')
+        )
 
 })
 
